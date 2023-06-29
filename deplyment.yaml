@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    tier: development
+spec: 
+  replicas: 6
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
+
+#Recreate
+#Rolling update
+#Kubectl appply vs kubectl create
+#kubectl rollout undo 
+#kubectl rollout status
+#kubectl rollout history
+#kubectl aplly -f
+
+#kubectl logs <pod_name>
+#kubectl logs --since=6h <pod_name>
+#kubectl logs --tail=50 <pod_name> >> mislogs.txt
+#kubectl logs -c <container_name> <pod_name>
+#kubectl logs <pod_name> --all-containers
+
+#kubectl edit deplyment mydeploy --record
+#kubectol set deployment mydeploy 
+#kubectl create --record nginx=nginx:1.7

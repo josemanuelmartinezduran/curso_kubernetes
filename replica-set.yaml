@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginxset
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: mirs
+      labels:
+        app: nginx
+        cliente: amdocs
+        ambiente: produccion
+    spec:
+      containers:
+        - name: otropod
+          image: nginx
+          ports:
+            - containerPort: 8701
+
+#kubectl create -f replica-set.yaml
+#kubectl get replicaset
+#kubectl replace -f
+#kubectl scale --replicas=6 -f replica-set.yaml

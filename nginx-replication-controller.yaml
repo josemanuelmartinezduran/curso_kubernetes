@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginxtwo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: nginxcontroller
+      labels:
+        app: nginxcontroller
+    spec:
+      containers:
+        - name: mynginxtwo
+          image: nginx
+          ports:
+            - containerPort: 3068
